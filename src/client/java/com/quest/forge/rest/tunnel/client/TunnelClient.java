@@ -99,7 +99,7 @@ public void stop() throws Exception {
 }
 
 public void start() throws Exception {
-	restClient.testConnection();
+	//restClient.testConnection();
 	logger.info("Successfully verified rest service " + restClient.getBaseURL());
 
 	wsClient = new WebSocketClient();
