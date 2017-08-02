@@ -1,0 +1,9 @@
+// The tunnel client only allows to connect to the FMS and external web server, all the other permission is disallowed
+// For the full set of jdk default permissions, please refer to https://docs.oracle.com/javase/7/docs/technotes/guides/security/permissions.html
+grant {
+	permission java.util.PropertyPermission "*", "read,write";
+	permission java.lang.RuntimePermission "*";
+	
+	permission java.net.SocketPermission "localhost:8081", "connect,resolve";
+	permission java.net.SocketPermission "localhost:8080", "connect,resolve";
+};

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2012 Quest Software, Inc. ALL RIGHTS RESERVED. This software 
+	is the confidential and proprietary information of Quest Software Inc. ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall 
+	use it only in accordance with the terms of the license agreement you entered 
+	into with Quest Software Inc. QUEST SOFTWARE INC. MAKES NO REPRESENTATIONS 
+	OR WARRANTIES ABOUT THE SUITABILITY OF THE SOFTWARE, EITHER EXPRESS OR IMPLIED, 
+	INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS 
+	FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. QUEST SOFTWARE SHALL NOT BE 
+	LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING 
+	OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES. -->
+
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+
+	<info organisation="${product.organisation}" module="${product.module}" branch="${product.code}" revision="${build.number}"
+		e:version="${product.version}" e:build-url="${build.url}">
+		<ivyauthor name="Forge Server" url="mailto:QDL.RD.Catalyst.Server@quest.com"/>
+		<description>
+			RestAPI For Forge
+		</description>
+	</info>
+
+	<configurations>
+		<conf name="build" visibility="private"/>
+		<conf name="compile" visibility="private"/>
+		<conf name="fglcmd" visibility="private"/>
+		<conf name="cartridges" description="Cartridges" extends="base-cartridge" />
+		<conf name="base-cartridge" description="Cartridge for tunnel client" />
+		<conf name="sample" description="Cartridges" extends="cartridges"/>
+		<conf name="war" visibility="private" />
+		<conf name="escrow" description="Escrow" />
+		<conf name="testing-tools" visibility="private" description="Artifacts required for junit tests"/>
+	</configurations>
+
+	<publications>
+		<artifact name="Foglight-RestAPI" type="archive" conf="base-cartridge" ext="car" />
+		<artifact name="Escrow-Source" type="source" conf="escrow" ext="zip" />
+		<artifact name="zip-file-password" type="source" conf="escrow" ext="txt" />
+	</publications>
+
+	<dependencies>
+		<dependency org="quest" name="fgl-core" branch="${fgl-core.branch}" rev="${fgl-core.rev}" transitive="false" conf="fglcmd->fglcmd;build->fglant;compile->devkit-bin;compile->devkit-deprecated" />
+		<dependency org="quest" name="fglcore-devkit" branch="${fglcore-devkit.branch}" rev="${fglcore-devkit.rev}" transitive="false" conf="compile->api" />
+		<dependency org="google" name="gson" conf="compile,war->master" rev="${gson.rev}" transitive="false" />
+		<dependency org="apache" name="commons-logging" conf="compile,war->master" rev="1.1.3" transitive="false" />
+		<dependency org="apache" name="commons-io" conf="compile,war->master" rev="2.4" transitive="false" />
+		<dependency org="eclipse" name="jetty-ws-client" conf="compile,war->master" rev="9.4" transitive="false" />
+		<dependency org="javax" name="websocket-api" conf="compile,war->master" rev="1.0" transitive="false" />
+		<dependency org="javax" name="servlet-api" conf="compile,war->master" rev="3.0" transitive="false" />
+		<dependency org="junit" name="junit" rev="4.8.2" conf="testing-tools -> default"/>		
+		<dependency org="mockito" name="mockito" rev="1.8.5" conf="testing-tools->default,docs"/>
+	</dependencies>
+</ivy-module>
+
+

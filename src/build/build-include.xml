@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="include">
+	<dirname property="project.base.dir" file="${ant.file.include}/../../" />
+	<property name="build.dir" location="${project.base.dir}/build" />
+	
+	<get dest="${build.dir}/imports" ignoreerrors="true" usetimestamp="true">
+		<url url="${import.helper.base}/build-import.xml" />
+		<url url="${import.helper.base}/build-ivy.xml" />
+		<url url="${import.helper.base}/build-quest-ant-addons.xml" />
+		<url url="${import.helper.base}/build-fglcmd.xml" />
+		<url url="${import.helper.base}/build-fglant.xml" />
+		<url url="${import.helper.base}/build-ant-contrib.xml" />
+		<url url="${import.helper.base}/build-localization.xml" />
+		<url url="${import.helper.base}/build-xmltask.xml" />
+	</get>
+
+	<import file="${build.dir}/imports/build-import.xml" />
+	<import file="${build.dir}/imports/build-ivy.xml" />
+	<import file="${build.dir}/imports/build-quest-ant-addons.xml" />
+	<import file="${build.dir}/imports/build-fglcmd.xml" />
+	<import file="${build.dir}/imports/build-fglant.xml" />
+	<import file="${build.dir}/imports/build-ant-contrib.xml" />
+	<import file="${build.dir}/imports/build-localization.xml" />
+	<import file="${build.dir}/imports/build-xmltask.xml" />
+</project>

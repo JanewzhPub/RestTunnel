@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/client/java"/>
+	<classpathentry kind="src" path="src/server/java"/>
+	<classpathentry kind="src" path="src/common/java"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Users/jwang7/Desktop/resttunnel/build/downloaded/compile/gson-2.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jwang7/Desktop/resttunnel/build/downloaded/compile/jetty-io-9.4.0.M1.jar"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB/downloaded/compile/commons-io.jar"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB/downloaded/compile/commons-logging.jar"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB/downloaded/compile/gson-2.6.2.jar"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB/downloaded/compile/jetty-io-9.4.0.M1.jar"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB/downloaded/compile/jetty-util-9.4.0.M1.jar"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB/downloaded/compile/servlet-api.jar"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB/downloaded/compile/websocket-api-9.4.0.M1.jar"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB/downloaded/compile/websocket-api.jar"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB/downloaded/compile/websocket-client-9.4.0.M1.jar"/>
+	<classpathentry kind="var" path="RESTTUNNEL_LIB/downloaded/compile/websocket-common-9.4.0.M1.jar"/>
+	<classpathentry kind="output" path="build/eclipse"/>
+</classpath>

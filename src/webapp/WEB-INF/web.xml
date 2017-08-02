@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2013 Dell Inc. ALL RIGHTS RESERVED. This software is the confidential 
+	and proprietary information of Quest Software Inc. ("Confidential Information"). 
+	You shall not disclose such Confidential Information and shall use it only 
+	in accordance with the terms of the license agreement you entered into with 
+	Quest Software Inc. QUEST SOFTWARE INC. MAKES NO REPRESENTATIONS OR WARRANTIES 
+	ABOUT THE SUITABILITY OF THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING 
+	BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR 
+	A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. QUEST SOFTWARE SHALL NOT BE LIABLE 
+	FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR DISTRIBUTING 
+	THIS SOFTWARE OR ITS DERIVATIVES. -->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<display-name>Forge REST Tunnel Server</display-name>
+
+	<servlet>
+		<servlet-name>Tunnel Server Servlet</servlet-name>
+		<servlet-class>com.quest.forge.rest.tunnel.server.TunnelServerServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Tunnel Server Servlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- set idle time to a large value -->
+	<context-param>
+		<param-name>org.apache.tomcat.websocket.executorKeepAliveTimeSeconds</param-name>
+		<param-value>10000000</param-value>
+	</context-param>
+	<!-- set binary buffer size to 2M -->
+	<context-param>
+		<param-name>org.apache.tomcat.websocket.binaryBufferSize</param-name>
+		<param-value>2097152</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>WebsocketHandshakeFilter</filter-name>
+		<filter-class>com.quest.forge.rest.tunnel.server.filter.WebsocketHandshakeFilter</filter-class>
+		<init-param>
+			<param-name>KEYSTORE</param-name>
+			<param-value>FoglightRestTunnel.jks</param-value>
+		</init-param>
+		<init-param>
+			<param-name>KEYSTORE_PWD</param-name>
+			<param-value>nitrogen</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>WebsocketHandshakeFilter</filter-name>
+		<url-pattern>/tunnel</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>HttpRequestTokenFilter</filter-name>
+		<filter-class>com.quest.forge.rest.tunnel.server.filter.HttpRequestTokenFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>HttpRequestTokenFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
