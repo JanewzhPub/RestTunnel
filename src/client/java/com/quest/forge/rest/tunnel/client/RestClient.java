@@ -86,11 +86,20 @@ public void testConnection() throws IOException {
 	}
 }
 
+private String parseRequestedUrl(String baseUrl, String requestedUrl) {
+	if (requestedUrl.startsWith("/api/v1")) {
+		return baseUrl + requestedUrl.replace("/api/v1", "");
+	} else if (requestedUrl.startsWith("/v1")) {
+		return baseUrl + requestedUrl.replace("/v1", "");
+	}
+	return baseUrl + requestedUrl;
+}
+
 public ResourceResponse request(ResourceRequest request) throws IOException {
 	OutputStream out = null;
 	InputStream is = null;
 	try {
-		URL url = new URL(baseURL + request.getResource());
+		URL url = new URL(parseRequestedUrl(baseURL, request.getResource()));
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod(request.getHttpMethod());
 		con.setRequestProperty("Auth-Token", request.getAuthToken());
