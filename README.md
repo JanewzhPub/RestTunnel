@@ -9,8 +9,10 @@ This is the source code for restful tunnel.
 
 # Build
 `mvn clean` -- clean all the modules
+
 `mvn install` -- build all the modules
 
 # Run
 Client: target folder contains all the files you need to run the client.
+
 Server: target folder contains .war files which you need to deploy to your webserver.
