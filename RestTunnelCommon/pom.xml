@@ -37,4 +37,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<groupId>RestTunnel</groupId>
 </project>

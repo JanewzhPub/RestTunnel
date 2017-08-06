@@ -13,7 +13,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>RestTunnelCommon</groupId>
+			<groupId>RestTunnel</groupId>
 			<artifactId>RestTunnelCommon</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
@@ -31,4 +31,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<groupId>RestTunnel</groupId>
 </project>
