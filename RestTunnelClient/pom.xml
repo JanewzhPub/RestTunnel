@@ -78,6 +78,7 @@
 					<include>security.policy</include>
 					<include>startClient.bat</include>
 					<include>foglightwss.keystore</include>
+					<include>startClient.sh</include>
 				</includes>
 			</resource>
 		</resources>
