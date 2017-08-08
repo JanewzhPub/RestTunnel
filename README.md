@@ -34,3 +34,21 @@ You can find <RestTunnelServer>/target/api.war after build, and then you need to
 You can find <RestTunnelClient>/target/security.policy after build, and you need to update the ip addresses for SocketPermission. One is your FMS's ip:port, and the other one is your web server's ip:port.
 You can find <RestTunnelClient>/target/startClient.bat after build, and you need to update the JAVA_HOME, RestTunnelServer's connection url (wss) and FMS's connection url (http). 
 Then in the command line, start client from startClient.bat.
+
+# Request Access Key
+For requesting the api of Foglight Restful APIs, you need to provide an Access-Key. This key can be retrieve from API provided by Server web application.
+|                  | 		                      |
+ ----------------- | ----------------------------
+| **PROTOCOL** | https |
+| **URL** | /accesskey |
+| **METHOD**| GET |
+| **HEADER**| Custom-Code |
+> **Note:**  An example of success response as below:
+> ```json
+{
+    "status": 1,
+    "data": {
+        "accessKey": "SjmdqbeeqkvLV/SnpzGa8v0e5Us="
+    }
+}
+```
