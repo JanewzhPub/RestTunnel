@@ -36,6 +36,7 @@ import java.nio.ByteBuffer;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
@@ -102,7 +103,10 @@ public void start() throws Exception {
 	restClient.testConnection();
 	logger.info("Successfully verified rest service " + restClient.getBaseURL());
 
-	wsClient = new WebSocketClient();
+    SslContextFactory sslContextFactory = new SslContextFactory();
+    sslContextFactory.setTrustAll(true);
+	
+	wsClient = new WebSocketClient(sslContextFactory);
 	wsClient.start();
 	URI tunnelServerUri = new URI(tunnelServerWebsocketUri);
 	ClientUpgradeRequest request = new ClientUpgradeRequest();

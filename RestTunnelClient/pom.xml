@@ -79,6 +79,13 @@
 					<include>startClient.bat</include>
 				</includes>
 			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<targetPath>${project.build.directory}/classes/com/quest/forge/rest/tunnel/client</targetPath>
+				<includes>
+					<include>foglightwss.keystore</include>
+				</includes>
+			</resource>
 		</resources>
 	</build>
 	<groupId>RestTunnel</groupId>

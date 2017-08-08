@@ -4,7 +4,9 @@ grant {
 	permission java.util.PropertyPermission "*", "read,write";
 	permission java.lang.RuntimePermission "*";
 	permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
+	permission java.security.SecurityPermission "*";
+	permission java.security.AllPermission;  
 	
-	permission java.net.SocketPermission "localhost:8081", "connect,resolve";
+	permission java.net.SocketPermission "10.30.154.102:8080", "connect,resolve";
 	permission java.net.SocketPermission "localhost:8080", "connect,resolve";
 };
