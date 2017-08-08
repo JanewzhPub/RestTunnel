@@ -5,7 +5,7 @@ grant {
 	permission java.lang.RuntimePermission "*";
 	permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
 	permission java.security.SecurityPermission "*"; 
-	permission java.io.FilePermission "foglightwss.keystore", "read";
+	permission java.io.FilePermission "<<ALL FILES>>", "read";
 	
 	permission java.net.SocketPermission "localhost:8443", "connect,resolve";
 	permission java.net.SocketPermission "10.30.154.102:8080", "connect,resolve";

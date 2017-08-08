@@ -56,6 +56,23 @@
 	</filter-mapping>
 
 	<filter>
+		<filter-name>RequestAccessTokenFilter</filter-name>
+		<filter-class>com.quest.forge.rest.tunnel.server.filter.RequestAccessKeyFilter</filter-class>
+		<init-param>
+			<param-name>KEYSTORE</param-name>
+			<param-value>FoglightRestTunnel.jks</param-value>
+		</init-param>
+		<init-param>
+			<param-name>KEYSTORE_PWD</param-name>
+			<param-value>nitrogen</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>RequestAccessTokenFilter</filter-name>
+		<url-pattern>/accesstoken</url-pattern>
+	</filter-mapping>
+
+	<filter>
 		<filter-name>HttpRequestTokenFilter</filter-name>
 		<filter-class>com.quest.forge.rest.tunnel.server.filter.HttpRequestTokenFilter</filter-class>
 	</filter>
@@ -68,9 +85,10 @@
 	    <web-resource-collection>
 	        <web-resource-name>api</web-resource-name>
 	        <url-pattern>/tunnel</url-pattern>
+	        <url-pattern>/accesstoken</url-pattern>
 	    </web-resource-collection>
 	    <user-data-constraint>
 	        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
 	    </user-data-constraint>
-</security-constraint>
+	</security-constraint>
 </web-app>

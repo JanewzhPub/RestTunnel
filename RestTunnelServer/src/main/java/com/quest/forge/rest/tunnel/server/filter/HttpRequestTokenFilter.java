@@ -47,14 +47,12 @@ import com.quest.forge.rest.tunnel.server.service.ServiceFactory;
  *
  */
 public class HttpRequestTokenFilter implements Filter {
-
 @Override
 public void destroy() {}
 
 @Override
 public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 		throws IOException, ServletException {
-
 	if (request instanceof HttpServletRequest) {
 		/*
 		 * Won't do anything for the /tunnel websocket, leave it to
