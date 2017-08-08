@@ -28,6 +28,9 @@ Add following configuration to tomcat's server.xml (<TOMCAT_HOME>/conf/server.xm
 > **Note:** We will us foglightwss.keystore to secure the communication between client and server in our application. You can generate yours and change the server.xml configuration for server and change TunnelClient reference for client. 
 
 # Run
-Client: target folder contains all the files you need to run the client.
-
-Server: target folder contains .war files which you need to deploy to your webserver.
+- Server
+You can find <RestTunnelServer>/target/api.war after build, and then you need to deploy this war file to your web server.  
+- Client
+You can find <RestTunnelClient>/target/security.policy after build, and you need to update the ip addresses for SocketPermission. One is your FMS's ip:port, and the other one is your web server's ip:port.
+You can find <RestTunnelClient>/target/startClient.bat after build, and you need to update the JAVA_HOME, RestTunnelServer's connection url (wss) and FMS's connection url (http). 
+Then in the command line, start client from startClient.bat.
