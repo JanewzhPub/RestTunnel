@@ -67,11 +67,7 @@
 	<security-constraint>
 	    <web-resource-collection>
 	        <web-resource-name>api</web-resource-name>
-	        <url-pattern>/*</url-pattern>
-	        <http-method>DELETE</http-method>
-	        <http-method>GET</http-method>
-	        <http-method>POST</http-method>
-	        <http-method>PUT</http-method>
+	        <url-pattern>/tunnel</url-pattern>
 	    </web-resource-collection>
 	    <user-data-constraint>
 	        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
