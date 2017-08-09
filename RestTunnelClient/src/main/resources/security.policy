@@ -8,5 +8,5 @@ grant {
 	permission java.io.FilePermission "<<ALL FILES>>", "read";
 	
 	permission java.net.SocketPermission "localhost:8443", "connect,resolve";
-	permission java.net.SocketPermission "10.30.154.102:8080", "connect,resolve";
+	permission java.net.SocketPermission "localhost:8080", "connect,resolve";
 };

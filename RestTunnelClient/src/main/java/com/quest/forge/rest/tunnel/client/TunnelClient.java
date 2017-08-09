@@ -104,9 +104,10 @@ public void start() throws Exception {
 	logger.info("Successfully verified rest service " + restClient.getBaseURL());
 
 	SslContextFactory sslContextFactory = new SslContextFactory();
-	sslContextFactory.setKeyStorePath("foglightwss.keystore");
-	sslContextFactory.setKeyManagerPassword("questfoglight");
-	sslContextFactory.setKeyStorePassword("questfoglight"); 
+	sslContextFactory.setKeyStorePath("mfoglight.pfx");
+	sslContextFactory.setKeyStoreType("PKCS12");
+	sslContextFactory.setKeyManagerPassword("foglight");
+	sslContextFactory.setKeyStorePassword("foglight");
 	
 	wsClient = new WebSocketClient(sslContextFactory);
 	wsClient.start();
