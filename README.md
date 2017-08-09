@@ -8,6 +8,11 @@ This is the source code for restful tunnel.
 | RestTunnelServer | restful tunnel server is a webapplication and need to be deployed to webserver |
 
 # Build
+- Pre-requirement
+tomcat: 8+
+jdk: 1.8+
+mvn: 3+
+- Build Command
 `mvn clean` -- clean all the modules
 
 `mvn install` -- build all the modules
