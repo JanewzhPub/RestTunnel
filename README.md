@@ -11,6 +11,10 @@ This is the source code for restful tunnel.
 `mvn clean` -- clean all the modules
 
 `mvn install` -- build all the modules
+> **Note:**  Pre-requirement
+> tomcat: 8+
+> jdk: 1.8+
+> maven: 3+
 
 # WSS Configure
 We use security websocket for the client-server communication. So we need some configuration to your web server to support wss. 
