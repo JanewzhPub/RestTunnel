@@ -48,6 +48,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.quest.forge.rest.tunnel.server.service.ServiceFactory;
 import com.quest.forge.rest.tunnel.server.util.KeystoreUtil;
+import com.quest.forge.rest.tunnel.server.util.ResponseUtil;
 
 /**
  * Check whther it is valid websocket client, reject it if the Custom-Code and
@@ -74,6 +75,7 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 		 * same customer, it may due to different FMS input the same information
 		 * or some retry logic leading to this issue.
 		 */
+		response = ResponseUtil.getResponse(response);
 		if (isValid(customCode, accessKey)) {
 			chain.doFilter(request, response);
 		}

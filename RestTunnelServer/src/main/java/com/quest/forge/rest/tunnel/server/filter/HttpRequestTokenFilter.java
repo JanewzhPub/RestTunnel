@@ -39,6 +39,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.quest.forge.rest.tunnel.server.service.ServiceFactory;
+import com.quest.forge.rest.tunnel.server.util.ResponseUtil;
 
 /**
  * Check the access key for those normal http requests
@@ -54,6 +55,7 @@ public void destroy() {}
 public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 		throws IOException, ServletException {
 	if (request instanceof HttpServletRequest) {
+		response = ResponseUtil.getResponse(response);
 		/*
 		 * Won't do anything for the /tunnel websocket, leave it to
 		 * WebsocketHandshakeFilter have the checking
