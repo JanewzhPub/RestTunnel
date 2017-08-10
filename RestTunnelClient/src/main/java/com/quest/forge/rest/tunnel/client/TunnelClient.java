@@ -103,13 +103,14 @@ public void start() throws Exception {
 	restClient.testConnection();
 	logger.info("Successfully verified rest service " + restClient.getBaseURL());
 
-	SslContextFactory sslContextFactory = new SslContextFactory();
-	sslContextFactory.setKeyStorePath("mfoglight.pfx");
-	sslContextFactory.setKeyStoreType("PKCS12");
-	sslContextFactory.setKeyManagerPassword("foglight");
-	sslContextFactory.setKeyStorePassword("foglight");
+//	SslContextFactory sslContextFactory = new SslContextFactory();
+//	sslContextFactory.setKeyStorePath("mfoglight.pfx");
+//	sslContextFactory.setKeyStoreType("PKCS12");
+//	sslContextFactory.setKeyManagerPassword("foglight");
+//	sslContextFactory.setKeyStorePassword("foglight");
 	
-	wsClient = new WebSocketClient(sslContextFactory);
+//	wsClient = new WebSocketClient(sslContextFactory);
+	wsClient = new WebSocketClient();
 	wsClient.start();
 	URI tunnelServerUri = new URI(tunnelServerWebsocketUri);
 	ClientUpgradeRequest request = new ClientUpgradeRequest();
