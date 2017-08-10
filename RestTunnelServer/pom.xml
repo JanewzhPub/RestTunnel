@@ -13,6 +13,28 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.thetransactioncompany</groupId>
+			<artifactId>cors-filter</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.thetransactioncompany</groupId>
+			<artifactId>java-property-utils</artifactId>
+			<version>1.9.1</version>
+		</dependency>
+		<dependency>
 			<groupId>RestTunnel</groupId>
 			<artifactId>RestTunnelCommon</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
@@ -31,5 +53,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<groupId>RestTunnel</groupId>
 </project>
