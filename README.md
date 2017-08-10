@@ -74,10 +74,19 @@ Request mtoken
 > }
 >```
 
-# Run
-- Server
+# Deployment/Run
+
+Server
+------
+
 You can find <RestTunnelServer>/target/api.war after build, and then you need to deploy this war file to your web server.  
-- Client
+> **Note:**  For support WSS please refer to section WSS Configure
+
+Client
+---------
 You can find <RestTunnelClient>/target/security.policy after build, and you need to update the ip addresses for SocketPermission. One is your FMS's ip:port, and the other one is your web server's ip:port.
-You can find <RestTunnelClient>/target/startClient.bat after build, and you need to update the JAVA_HOME, RestTunnelServer's connection url (wss) and FMS's connection url (http). 
+You can find <RestTunnelClient>/target/startClient.bat after build, and you need to update the JAVA_HOME, RestTunnelServer's connection url (wss) and FMS's connection url (http). If you change Custom Code, you need to retrieve ttoken (refer to Request ttoken) and update the default custom code (Quest) and token afterwards to your new settings.
 Then in the command line, start client from startClient.bat.
+
+# Request Changes
+If you can run the application successfully, then you need to mtoken with your Custom Code first (refer to Request mtoken). Then use this token as a header (Access-Key) for all the Foglight Restful APIs. 
