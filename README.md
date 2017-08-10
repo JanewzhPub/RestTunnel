@@ -44,7 +44,7 @@ Request ttoken
 | **URL** | /ttoken |
 | **METHOD**| GET |
 | **HEADER**| Custom-Code |
- ----------------- | ----------------------------
+
 > **Note:**  An example of success response as below:
  >```json
 > {
