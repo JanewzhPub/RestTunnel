@@ -53,9 +53,9 @@ import com.quest.forge.rest.tunnel.server.util.KeystoreUtil;
  * @author jwang7
  *
  */
-public class RequestAccessKeyFilter implements Filter {
+public class RequestTunnelAccessKeyFilter implements Filter {
 
-	private final static Log logger = LogFactory.getLog(RequestAccessKeyFilter.class.getName());
+	private final static Log logger = LogFactory.getLog(RequestTunnelAccessKeyFilter.class.getName());
 
 	@Override
 	public void destroy() {
@@ -71,12 +71,12 @@ public class RequestAccessKeyFilter implements Filter {
 			if (method != null && "GET".equalsIgnoreCase(method)) {
 				if (customCode != null) {
 					try {
-						String accessKey = Base64.getEncoder().encodeToString(sha1(ServiceFactory.getInstance()
-								.getAccessKeyManager().generateAccessKey(customCode).getBytes()));
-						response.getWriter().write("{\"status\":1,\"data\":{\"accessKey\":\"" + accessKey + "\"}}");
+						String ttoken = ServiceFactory.getInstance().getAccessKeyManager()
+								.generateAccessKey(customCode);
+						response.getWriter().write("{\"status\":1,\"data\":{\"ttoken\":\"" + ttoken + "\"}}");
 					} catch (Exception e) {
 						response.getWriter()
-								.write("{\"status\":0,\"code\":\"findKeyPairFailed\"}");
+								.write("{\"status\":0,\"code\":\"genTunnelAccessKeyFailed\"}");
 					}
 				} else {
 					response.getWriter().write("{\"status\":0,\"code\":\"customCodeNotFound\"}");

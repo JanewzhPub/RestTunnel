@@ -60,7 +60,6 @@
 		<servlet-class>com.quest.forge.rest.tunnel.server.TunnelServerServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet> 
-
 	<servlet-mapping>
 		<servlet-name>Tunnel Server Servlet</servlet-name>
 		<url-pattern>/*</url-pattern>
@@ -95,8 +94,8 @@
 	</filter-mapping>
 
 	<filter>
-		<filter-name>RequestAccessTokenFilter</filter-name>
-		<filter-class>com.quest.forge.rest.tunnel.server.filter.RequestAccessKeyFilter</filter-class>
+		<filter-name>RequestMobileAccessTokenFilter</filter-name>
+		<filter-class>com.quest.forge.rest.tunnel.server.filter.RequestMobileAccessKeyFilter</filter-class>
 		<init-param>
 			<param-name>KEYSTORE</param-name>
 			<param-value>FoglightRestTunnel.jks</param-value>
@@ -107,8 +106,25 @@
 		</init-param>
 	</filter>
 	<filter-mapping>
-		<filter-name>RequestAccessTokenFilter</filter-name>
-		<url-pattern>/accesstoken</url-pattern>
+		<filter-name>RequestMobileAccessTokenFilter</filter-name>
+		<url-pattern>/mtoken</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>RequestTunnelAccessTokenFilter</filter-name>
+		<filter-class>com.quest.forge.rest.tunnel.server.filter.RequestTunnelAccessKeyFilter</filter-class>
+		<init-param>
+			<param-name>KEYSTORE</param-name>
+			<param-value>FoglightRestTunnel.jks</param-value>
+		</init-param>
+		<init-param>
+			<param-name>KEYSTORE_PWD</param-name>
+			<param-value>nitrogen</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>RequestTunnelAccessTokenFilter</filter-name>
+		<url-pattern>/ttoken</url-pattern>
 	</filter-mapping>
 
 	<filter>
