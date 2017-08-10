@@ -36,16 +36,17 @@ There are two kind of access key, one we called "mtoken" is used to identify the
 First, you need to request a ttoken by your custom code, then you can use this custom code and ttoken to change the client.bat/.sh arguments before startup the client application.
 Then, before calling the FMS restful APIs, you need to request a mtoken with your custom code and then you can use this mtoken to request the FMS restful APIs.
 
-**Request ttoken**
+Request ttoken
+--------------
 |                  | 		                      |
  ----------------- | ----------------------------
 | **PROTOCOL** | https |
 | **URL** | /ttoken |
 | **METHOD**| GET |
 | **HEADER**| Custom-Code |
-
+ ----------------- | ----------------------------
 > **Note:**  An example of success response as below:
->```json
+ >```json
 {
     "status": 1,
     "data": {
@@ -54,14 +55,15 @@ Then, before calling the FMS restful APIs, you need to request a mtoken with you
 }
 >```
 
-**Request mtoken**
+Request mtoken
+--------------
 |                  | 		                      |
  ----------------- | ----------------------------
 | **PROTOCOL** | https |
 | **URL** | /mtoken |
 | **METHOD**| GET |
 | **HEADER**| Custom-Code |
-
+ ----------------- | ----------------------------
 > **Note:**  An example of success response as below:
 > ```json
 {
