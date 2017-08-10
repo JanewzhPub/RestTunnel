@@ -43,8 +43,9 @@ Then, before calling the FMS restful APIs, you need to request a mtoken with you
 | **URL** | /ttoken |
 | **METHOD**| GET |
 | **HEADER**| Custom-Code |
+
 > **Note:**  An example of success response as below:
- >```json
+>```json
 {
     "status": 1,
     "data": {
@@ -60,6 +61,7 @@ Then, before calling the FMS restful APIs, you need to request a mtoken with you
 | **URL** | /mtoken |
 | **METHOD**| GET |
 | **HEADER**| Custom-Code |
+
 > **Note:**  An example of success response as below:
 > ```json
 {
