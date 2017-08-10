@@ -47,12 +47,12 @@ Request ttoken
  ----------------- | ----------------------------
 > **Note:**  An example of success response as below:
  >```json
-{
-    "status": 1,
-    "data": {
-        "ttoken": "ZxdGqSdsV9nsG0XWvsM4F0Qt0LhpX6cbYiCxuSwOo6ON3p4KJEZG9go88+TCpAGrd6wTjStc9PGjHmTXFWA+hnDfUjgDyQT/R+ybQBfRIR/UX+imn3SvVrDwnJeAptvFXUnI/nGNbr/zAdobmHABh9G79cIIblUvVWzEgP1jXZo="
-    }
-}
+> {
+>     "status": 1,
+>     "data": {
+>         "ttoken": "ZxdGqSdsV9nsG0XWvsM4F0Qt0LhpX6cbYiCxuSwOo6ON3p4KJEZG9go88+TCpAGrd6wTjStc9PGjHmTXFWA+hnDfUjgDyQT/R+ybQBfRIR/UX+imn3SvVrDwnJeAptvFXUnI/nGNbr/zAdobmHABh9G79cIIblUvVWzEgP1jXZo="
+>     }
+> }
 >```
 
 Request mtoken
@@ -63,15 +63,15 @@ Request mtoken
 | **URL** | /mtoken |
 | **METHOD**| GET |
 | **HEADER**| Custom-Code |
- ----------------- | ----------------------------
+
 > **Note:**  An example of success response as below:
 > ```json
-{
-    "status": 1,
-    "data": {
-        "mtoken": "SjmdqbeeqkvLV/SnpzGa8v0e5Us="
-    }
-}
+> {
+>     "status": 1,
+>     "data": {
+>         "mtoken": "SjmdqbeeqkvLV/SnpzGa8v0e5Us="
+>     }
+> }
 >```
 
 # Run
