@@ -44,7 +44,6 @@ import com.quest.forge.rest.tunnel.common.ExchangeMessage;
 import com.quest.forge.rest.tunnel.common.ResourceRequest;
 import com.quest.forge.rest.tunnel.common.ResourceResponse;
 import com.quest.forge.rest.tunnel.server.service.ServiceFactory;
-import com.quest.forge.rest.tunnel.server.util.ResponseUtil;
 
 /**
  * Consumed all http request from client, transform it to message to
@@ -63,7 +62,6 @@ private final static Log logger = LogFactory.getLog(TunnelServerServlet.class.ge
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
 		IOException {
-	resp = ResponseUtil.getResponse(resp);
 	service(req, resp);
 }
 
@@ -73,7 +71,6 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 	try {
 		String token = req.getHeader(HTTP_HEADER_AUTH_TOKEN);
 		String customerAccessKeySHA1Hash = req.getHeader(HTTP_HEADER_ACCESS_KEY);
-		resp = ResponseUtil.getResponse(resp);
 		TunnelWebsocket ws = ServiceFactory.getInstance().getTunnelClientConnMaintainService()
 				.getClient(customerAccessKeySHA1Hash);
 		if (ws == null) {
@@ -133,21 +130,18 @@ private String getFailureResponse(String errorCode) {
 @Override
 protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
 		IOException {
-	resp = ResponseUtil.getResponse(resp);
 	service(req, resp);
 }
 
 @Override
 protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
 		IOException {
-	resp = ResponseUtil.getResponse(resp);
 	service(req, resp);
 }
 
 @Override
 protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
 		IOException {
-	resp = ResponseUtil.getResponse(resp);
 	service(req, resp);
 }
 

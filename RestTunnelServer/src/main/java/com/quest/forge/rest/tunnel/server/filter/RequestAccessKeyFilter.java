@@ -46,7 +46,6 @@ import org.apache.commons.logging.LogFactory;
 
 import com.quest.forge.rest.tunnel.server.service.ServiceFactory;
 import com.quest.forge.rest.tunnel.server.util.KeystoreUtil;
-import com.quest.forge.rest.tunnel.server.util.ResponseUtil;
 
 /**
  * Assign access key for custom code.
@@ -68,7 +67,6 @@ public class RequestAccessKeyFilter implements Filter {
 		if (request instanceof HttpServletRequest) {
 			String customCode = ((HttpServletRequest) request).getHeader(HTTP_HEADER_CUSTOM_CODE);
 			String method = ((HttpServletRequest) request).getMethod();
-			response = ResponseUtil.getResponse(response);
 			response.setContentType("application/json");
 			if (method != null && "GET".equalsIgnoreCase(method)) {
 				if (customCode != null) {
