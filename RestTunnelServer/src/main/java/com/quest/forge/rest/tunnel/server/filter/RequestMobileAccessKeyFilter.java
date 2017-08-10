@@ -44,8 +44,12 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.quest.forge.rest.tunnel.server.pojo.AbnormalResponse;
+import com.quest.forge.rest.tunnel.server.pojo.MTokenResponseData;
+import com.quest.forge.rest.tunnel.server.pojo.NormalResponse;
 import com.quest.forge.rest.tunnel.server.service.ServiceFactory;
 import com.quest.forge.rest.tunnel.server.util.KeystoreUtil;
+import com.quest.forge.rest.tunnel.server.util.ResponseUtil;
 
 /**
  * Assign access key for custom code.
@@ -67,23 +71,30 @@ public class RequestMobileAccessKeyFilter implements Filter {
 		if (request instanceof HttpServletRequest) {
 			String customCode = ((HttpServletRequest) request).getHeader(HTTP_HEADER_CUSTOM_CODE);
 			String method = ((HttpServletRequest) request).getMethod();
+			String errorCode = null;
 			response.setContentType("application/json");
 			if (method != null && "GET".equalsIgnoreCase(method)) {
 				if (customCode != null) {
 					try {
 						String mtoken = Base64.getEncoder().encodeToString(sha1(ServiceFactory.getInstance()
 								.getAccessKeyManager().generateAccessKey(customCode).getBytes()));
-						response.getWriter().write("{\"status\":1,\"data\":{\"mtoken\":\"" + mtoken + "\"}}");
+						response.getWriter().write(
+								ResponseUtil.parseResponse(
+										new NormalResponse( 
+												new MTokenResponseData(mtoken))));
+						return;
 					} catch (Exception e) {
-						response.getWriter()
-								.write("{\"status\":0,\"code\":\"genMobileAccessKeyFailed\"}");
+						errorCode = "genMobileAccessKeyFailed";
 					}
 				} else {
-					response.getWriter().write("{\"status\":0,\"code\":\"customCodeNotFound\"}");
+					errorCode = "customCodeNotFound";
 				}
 			} else {
-				response.getWriter().write("{\"status\":0,\"code\":\"invalidMethodFound\"}");
+				errorCode = "invalidMethodFound";
 			}
+			response.getWriter().write(
+					ResponseUtil.parseResponse(
+							new AbnormalResponse(errorCode)));
 		}
 	}
 

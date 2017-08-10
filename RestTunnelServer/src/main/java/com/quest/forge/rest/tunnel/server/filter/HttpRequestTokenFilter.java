@@ -38,7 +38,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.quest.forge.rest.tunnel.server.pojo.AbnormalResponse;
 import com.quest.forge.rest.tunnel.server.service.ServiceFactory;
+import com.quest.forge.rest.tunnel.server.util.ResponseUtil;
 
 /**
  * Check the access key for those normal http requests
@@ -74,7 +76,9 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 			}
 			else {
 				response.setContentType("application/json");
-				response.getWriter().write("{\"status\":0,\"code\":\"foglightNotConnected\"}");
+				response.getWriter().write(
+						ResponseUtil.parseResponse(
+								new AbnormalResponse("foglightNotConnected")));
 			}
 		}
 		else {
