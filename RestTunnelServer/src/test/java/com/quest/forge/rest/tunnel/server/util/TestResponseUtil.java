@@ -29,9 +29,9 @@ public class TestResponseUtil {
 	@Test
 	public void testTTokenResponse() {
 		Assert.assertEquals(
-				"{\"status\":1,\"data\":{\"ttoken\":\"fjidjfioeredf=938kkofd*fkdo\"}}", 
+				"{\"status\":1,\"data\":{\"ttoken\":\"fjidjfioeredf=938kkofd*fkdo\",\"custom-code\":\"abcdefg\"}}", 
 				ResponseUtil.parseResponse(
 						new NormalResponse(
-								new TTokenResponseData("fjidjfioeredf=938kkofd*fkdo"))));
+								new TTokenResponseData("abcdefg", "fjidjfioeredf=938kkofd*fkdo"))));
 	}
 }
