@@ -79,6 +79,7 @@
 					<include>startClient.bat</include>
 					<include>mfoglight.pfx</include>
 					<include>startClient.sh</include>
+					<include>log4j.properties</include>
 				</includes>
 			</resource>
 		</resources>
