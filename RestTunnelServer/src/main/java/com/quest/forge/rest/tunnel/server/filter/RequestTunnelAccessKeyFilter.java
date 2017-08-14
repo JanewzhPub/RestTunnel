@@ -41,8 +41,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.commons.text.RandomStringGenerator;
 
 import com.quest.forge.rest.tunnel.server.pojo.AbnormalResponse;
 import com.quest.forge.rest.tunnel.server.pojo.MTokenResponseData;
@@ -82,7 +84,13 @@ public class RequestTunnelAccessKeyFilter implements Filter {
 						response.getWriter().write(
 								ResponseUtil.parseResponse(
 										new NormalResponse( 
-												new TTokenResponseData(ttoken))));
+												new TTokenResponseData(
+														new RandomStringGenerator.Builder()
+															.withinRange('a', 'z')
+															.withinRange('A', 'Z')
+															.build()
+															.generate(8),
+														ttoken))));
 						return;
 					} catch (Exception e) {
 						errorCode = "genTunnelAccessKeyFailed";

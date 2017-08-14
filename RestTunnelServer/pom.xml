@@ -40,6 +40,11 @@
 			<version>2.6.3</version>
 		</dependency>
 		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-text</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		<dependency>
 			<groupId>RestTunnel</groupId>
 			<artifactId>RestTunnelCommon</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
