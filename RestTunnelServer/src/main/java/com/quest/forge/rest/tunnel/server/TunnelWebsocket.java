@@ -71,7 +71,7 @@ private Date estabishTime;
 
 private final Map<String, ExchangeMessage> inQueueMessages = new ConcurrentHashMap<String, ExchangeMessage>();
 
-private final static Log logger = LogFactory.getLog(TunnelWebsocket.class.getName());
+private final static Log logger = LogFactory.getLog(TunnelWebsocket.class);
 
 private final static int WS_CLIENT_HANDLING_TIMEOUT = 30 * 1000;
 

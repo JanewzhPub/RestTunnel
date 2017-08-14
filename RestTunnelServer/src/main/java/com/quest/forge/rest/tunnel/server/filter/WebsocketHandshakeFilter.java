@@ -58,7 +58,7 @@ import com.quest.forge.rest.tunnel.server.util.KeystoreUtil;
  */
 public class WebsocketHandshakeFilter implements Filter {
 
-private final static Log logger = LogFactory.getLog(WebsocketHandshakeFilter.class.getName());
+private final static Log logger = LogFactory.getLog(WebsocketHandshakeFilter.class);
 
 @Override
 public void destroy() {}

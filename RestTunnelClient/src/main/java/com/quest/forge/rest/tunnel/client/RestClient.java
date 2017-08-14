@@ -103,6 +103,7 @@ public ResourceResponse request(ResourceRequest request) throws IOException {
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod(request.getHttpMethod());
 		con.setRequestProperty("Auth-Token", request.getAuthToken());
+		con.setRequestProperty("Content-Type", request.getContentType());
 		con.setUseCaches(false);
 		if (request.getData() != null) {
 			con.setDoOutput(true);

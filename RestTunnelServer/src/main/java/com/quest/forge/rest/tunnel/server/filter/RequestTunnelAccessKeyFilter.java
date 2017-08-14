@@ -26,13 +26,10 @@
 package com.quest.forge.rest.tunnel.server.filter;
 
 import static com.quest.forge.rest.tunnel.common.Constants.*;
-import static com.quest.forge.rest.tunnel.server.util.KeystoreUtil.sha1;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Base64;
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -41,13 +38,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.text.RandomStringGenerator;
-
 import com.quest.forge.rest.tunnel.server.pojo.AbnormalResponse;
-import com.quest.forge.rest.tunnel.server.pojo.MTokenResponseData;
 import com.quest.forge.rest.tunnel.server.pojo.NormalResponse;
 import com.quest.forge.rest.tunnel.server.pojo.TTokenResponseData;
 import com.quest.forge.rest.tunnel.server.service.ServiceFactory;
@@ -62,7 +56,7 @@ import com.quest.forge.rest.tunnel.server.util.ResponseUtil;
  */
 public class RequestTunnelAccessKeyFilter implements Filter {
 
-	private final static Log logger = LogFactory.getLog(RequestTunnelAccessKeyFilter.class.getName());
+	private final static Log logger = LogFactory.getLog(RequestTunnelAccessKeyFilter.class);
 
 	@Override
 	public void destroy() {

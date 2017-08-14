@@ -59,7 +59,7 @@ import com.quest.forge.rest.tunnel.server.util.ResponseUtil;
  */
 public class RequestMobileAccessKeyFilter implements Filter {
 
-	private final static Log logger = LogFactory.getLog(RequestMobileAccessKeyFilter.class.getName());
+	private final static Log logger = LogFactory.getLog(RequestMobileAccessKeyFilter.class);
 
 	@Override
 	public void destroy() {

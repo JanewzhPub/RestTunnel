@@ -27,6 +27,7 @@ package com.quest.forge.rest.tunnel.server;
 
 import static com.quest.forge.rest.tunnel.common.Constants.HTTP_HEADER_ACCESS_KEY;
 import static com.quest.forge.rest.tunnel.common.Constants.HTTP_HEADER_AUTH_TOKEN;
+import static com.quest.forge.rest.tunnel.common.Constants.HTTP_HEADER_CONTENT_TYPE;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -57,7 +58,7 @@ public class TunnelServerServlet extends HttpServlet {
 
 private final static long serialVersionUID = 8093892394757892213L;
 
-private final static Log logger = LogFactory.getLog(TunnelServerServlet.class.getName());
+private final static Log logger = LogFactory.getLog(TunnelServerServlet.class);
 
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
@@ -71,6 +72,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 	try {
 		String token = req.getHeader(HTTP_HEADER_AUTH_TOKEN);
 		String customerAccessKeySHA1Hash = req.getHeader(HTTP_HEADER_ACCESS_KEY);
+		String contentType = req.getHeader(HTTP_HEADER_CONTENT_TYPE);
 		TunnelWebsocket ws = ServiceFactory.getInstance().getTunnelClientConnMaintainService()
 				.getClient(customerAccessKeySHA1Hash);
 		if (ws == null) {
@@ -98,6 +100,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		ResourceRequest requestPayload = new ResourceRequest(resource);
 		requestPayload.setAuthToken(token);
 		requestPayload.setHttpMethod(req.getMethod());
+		requestPayload.setContentType(contentType);
 		String data = getRequestRawData(req);
 		if (data != null && !data.trim().isEmpty()) {
 			requestPayload.setData(data);

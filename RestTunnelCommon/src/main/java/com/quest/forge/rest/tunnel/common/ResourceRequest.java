@@ -39,6 +39,8 @@ private String httpMethod;
 
 private String authToken;
 
+private String contentType;
+
 public ResourceRequest(String resource, String httpMethod, String authToken, String data) {
 	super(MessageType.RESOURCE_REQUEST, data);
 	this.resource = resource;
@@ -82,6 +84,14 @@ public String getHttpMethod() {
 
 public String getAuthToken() {
 	return authToken;
+}
+
+public String getContentType() {
+	return contentType;
+}
+
+public void setContentType(String contentType) {
+	this.contentType = contentType;
 }
 
 }

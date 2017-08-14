@@ -38,4 +38,5 @@ public static final String HTTP_HEADER_CUSTOM_CODE = "Custom-Code";
 
 public static final String HTTP_HEADER_AUTH_TOKEN = "Auth-Token";
 
+public static final String HTTP_HEADER_CONTENT_TYPE = "Content-Type";
 }
