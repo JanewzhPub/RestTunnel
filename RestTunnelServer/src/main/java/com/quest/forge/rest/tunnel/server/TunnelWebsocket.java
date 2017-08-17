@@ -73,7 +73,7 @@ private final Map<String, ExchangeMessage> inQueueMessages = new ConcurrentHashM
 
 private final static Log logger = LogFactory.getLog(TunnelWebsocket.class);
 
-private final static int WS_CLIENT_HANDLING_TIMEOUT = 30 * 1000;
+private final static int WS_CLIENT_HANDLING_TIMEOUT = 2 * 60 * 1000;
 
 private final static int MAX_CONCURRENT_REQUEST = 2000;
 
