@@ -8,5 +8,4 @@ grant {
 	permission java.io.FilePermission "<<ALL FILES>>", "read";
 	
 	permission java.net.SocketPermission "mfoglight.azurewebsites.net", "connect,resolve";
-	permission java.net.SocketPermission "10.30.154.102:8080", "connect,resolve";
 };
