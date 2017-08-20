@@ -44,7 +44,8 @@ a:hover {
 }
 /*=== 4. Main Form ===*/
 .login-form-1 {
-  max-width: 300px;
+  max-width: 500px;
+  width: 400px;
   border-radius: 5px;
   display: inline-block;
 }
@@ -74,6 +75,9 @@ a:hover {
   border-bottom: 2px solid #efefef;
   padding-right: 20px;
   position: relative;
+}
+.login-form-1 .form-group label {
+  display: block;
 }
 .login-form-1 .form-group:last-child {
   border-bottom: 0;
@@ -265,7 +269,7 @@ label:hover:before {
 /* selected mark aspect */
 [type="checkbox"]:not(:checked) + label:after,
 [type="checkbox"]:checked + label:after {
-  content: '✔';
+  content: '鉁�';
   top: 0;
   left: 2px;
   font-size: 14px;
