@@ -33,9 +33,9 @@ public class TunnelClientController {
 			} else {
 				model.addAttribute("ResultMessage", "Start client failed!");
 			}
-			return "startclient";
 		} else {
-			return "error";
+			model.addAttribute("ResultMessage", "Invalid parameter found!");
 		}
+		return "startclient";
 	}
 }

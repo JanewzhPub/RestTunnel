@@ -6,8 +6,6 @@
 <title>Foglight RestTunnel Client</title>
 </head>
 <body>
-	<!-- <input type="text" th:field="${RequestLogin.accessKey}" />
-	<input type="text" th:field="${RequestLogin.authToken}" /> -->
 	<img th:src="@{/requestQRCode(key=${RequestLogin.accessKey},token=${RequestLogin.authToken})}" />
 </body>
 </html>

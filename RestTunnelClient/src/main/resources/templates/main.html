@@ -16,6 +16,7 @@
 		<div class="logo">login</div>
 		<!-- Main Form -->
 		<div class="login-form-1">
+			<div th:if="${ResultMessage != null}" th:text="${ResultMessage}"></div>
 			<form id="login-form" class="text-left" action="#" th:action="@{/requestLogin}" th:object="${RequestLogin}" method="post">
 				<div class="login-form-main-message"></div>
 				<div class="main-login-form">
@@ -27,22 +28,10 @@
 								name="lg_customcode" placeholder="customcode" th:field="*{customCode}" />
 						</div>
 						<div class="form-group">
-							<label for="lg_authtoken" class="sr-only">Authentication Token</label> 
-							<input
-								type="text" class="form-control" id="lg_authtoken"
-								name="lg_authtoken" placeholder="authtoken" th:field="*{authToken}" />
-						</div>
-						<div class="form-group">
 							<label for="lg_accessKey" class="sr-only">Access Key</label> 
 							<input
 								type="text" class="form-control" id="lg_accessKey"
 								name="lg_accessKey" placeholder="accessKey" th:field="*{accessKey}" />
-						</div>
-						<div class="form-group">
-							<label for="lg_foglighturl" class="sr-only">Foglight URL</label> 
-							<input
-								type="text" class="form-control" id="lg_foglighturl"
-								name="lg_foglighturl" placeholder="foglightUrl" th:field="*{foglightUrl}" />
 						</div>
 					</div>
 					<button type="submit" class="login-button">

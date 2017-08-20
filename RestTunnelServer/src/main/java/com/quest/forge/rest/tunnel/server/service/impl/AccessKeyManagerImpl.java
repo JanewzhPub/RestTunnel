@@ -75,8 +75,8 @@ public static void main(String[] args) throws Exception {
 			"src/main/resources/FoglightRestTunnel.jks"), "nitrogen".toCharArray());
 	AccessKeyManagerImpl manager = new AccessKeyManagerImpl();
 	manager.init(pair);
-	String customCode = "Quest";
-	String signature = manager.generateAccessKey("Quest");
+	String customCode = "BankOfAmerica";
+	String signature = manager.generateAccessKey("BankOfAmerica");
 	System.out.println("Custom Code: " + customCode);
 	System.out.println("Tunnel Client Access Key: " + signature);
 	System.out.println("Mobile Client Access Key: "
