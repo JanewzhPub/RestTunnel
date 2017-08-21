@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLEncoder;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,7 +83,7 @@ public class TunnelClientController {
 		try {
 			String qrCodeContent = clientConfig.getMobileWebProtocol() + "://" + 
 					clientConfig.getMobileWebUrl() + clientConfig.getMobileWebPath() + 
-					"?key=" + accessKey + "&token=" + accessToken;
+					"?key=" + URLEncoder.encode(accessKey, "UTF-8") + "&token=" + URLEncoder.encode(accessToken, "UTF-8");
 			in = new FileInputStream(QRCode.from(qrCodeContent).to(ImageType.JPG).file());
 			return new ResponseEntity<byte[]> (IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
 		} catch (FileNotFoundException e) {
