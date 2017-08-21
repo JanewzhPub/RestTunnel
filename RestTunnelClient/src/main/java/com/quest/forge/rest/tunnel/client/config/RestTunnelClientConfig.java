@@ -22,6 +22,15 @@ public class RestTunnelClientConfig {
 	
 	@Value("${client.foglight.connection.path}")
 	private String foglightConnectionPath;
+	
+	@Value("${mobile.web.protocol}")
+	private String mobileWebProtocol;
+	
+	@Value("${mobile.web.url}")
+	private String mobileWebUrl;
+	
+	@Value("${mobile.web.path}")
+	private String mobileWebPath;
 
 	public String getWebsocketProtocol() {
 		return websocketProtocol;
@@ -42,5 +51,16 @@ public class RestTunnelClientConfig {
 	public String getFoglightConnectionPath() {
 		return foglightConnectionPath;
 	}
-	
+
+	public String getMobileWebProtocol() {
+		return mobileWebProtocol;
+	}
+
+	public String getMobileWebUrl() {
+		return mobileWebUrl;
+	}
+
+	public String getMobileWebPath() {
+		return mobileWebPath;
+	}	
 }

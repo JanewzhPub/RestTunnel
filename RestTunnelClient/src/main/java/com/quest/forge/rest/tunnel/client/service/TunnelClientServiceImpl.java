@@ -1,12 +1,8 @@
 package com.quest.forge.rest.tunnel.client.service;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.quest.forge.rest.tunnel.client.TunnelClient;
 import com.quest.forge.rest.tunnel.client.TunnelWebsocketWatcher;
 import com.quest.forge.rest.tunnel.client.config.RestTunnelClientConfig;
@@ -17,16 +13,22 @@ public class TunnelClientServiceImpl implements TunnelClientService {
 	@Autowired
 	private RestTunnelClientConfig clientConfig;
 	
-	private static Map<String, String> customCodeFoglightMap = new HashMap<String, String>();
-	
 	public static final int CONNECT_WAITING_TIMEOUT_CHECKCOUNT = 10;
 	public static final int CONNECT_WAITING_TIMEOUT = 5 * 1000;
 
+	private static TunnelClient client;
+	
 	@Override
 	public boolean startClient(String customCode, String connectionToken, String foglightUrl) {
 		try {
+			if (client != null && client.isConnected()) {
+				if (!shutdownClient()) {
+					//TODO handle shutdown exception
+					return false;
+				}
+			}
 			ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
-			TunnelClient client = new TunnelClient(
+			client = new TunnelClient(
 					clientConfig.getWebsocketProtocol() + "://" + 
 					clientConfig.getServerUrl() + clientConfig.getServerTunnelPath(),
 					clientConfig.getFoglightConnectionProtocol() + "://" + 
@@ -41,7 +43,6 @@ public class TunnelClientServiceImpl implements TunnelClientService {
 			for (int i = 0; i < CONNECT_WAITING_TIMEOUT_CHECKCOUNT; i++) {
 				Thread.sleep(CONNECT_WAITING_TIMEOUT);
 				if (client.isConnected()) {
-					customCodeFoglightMap.put(customCode, foglightUrl);
 					return true;
 				}
 			}
@@ -52,10 +53,21 @@ public class TunnelClientServiceImpl implements TunnelClientService {
 	}
 
 	@Override
-	public String getFoglightUrl(String customCode) {
-		if (customCode != null) {
-			return customCodeFoglightMap.get(customCode);
+	public boolean shutdownClient() {
+		if (client != null && client.isConnected()) {
+			try {
+				client.stop();
+				for (int i = 0; i < CONNECT_WAITING_TIMEOUT_CHECKCOUNT; i++) {
+					Thread.sleep(CONNECT_WAITING_TIMEOUT);
+					if (!client.isConnected()) {
+						client = null;
+						return true;
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
 		}
-		return null;
+		return false;
 	}
 }

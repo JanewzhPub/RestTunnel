@@ -17,21 +17,39 @@
 		<!-- Main Form -->
 		<div class="login-form-1">
 			<div th:if="${ResultMessage != null}" th:text="${ResultMessage}"></div>
-			<form id="login-form" class="text-left" action="#" th:action="@{/requestLogin}" th:object="${RequestLogin}" method="post">
+			<form id="login-form" class="text-left" action="#" th:action="@{/startclient}" th:object="${ClientInfo}" method="post">
 				<div class="login-form-main-message"></div>
 				<div class="main-login-form">
 					<div class="login-group">
 						<div class="form-group">
-							<label for="lg_customcode" class="sr-only">Custom Code</label> 
+							<label for="lg_customcode" class="sr-only">Custom Code</label>
 							<input
 								type="text" class="form-control" id="lg_customcode"
 								name="lg_customcode" placeholder="customcode" th:field="*{customCode}" />
+						</div>
+						<div class="form-group">
+							<label for="lg_connectionToken" class="sr-only">Connection Token</label>
+							<input
+								type="text" class="form-control" id="lg_connectionToken"
+								name="lg_connectionToken" placeholder="connectionToken" th:field="*{connectionToken}" />
 						</div>
 						<div class="form-group">
 							<label for="lg_accessKey" class="sr-only">Access Key</label> 
 							<input
 								type="text" class="form-control" id="lg_accessKey"
 								name="lg_accessKey" placeholder="accessKey" th:field="*{accessKey}" />
+						</div>
+						<div class="form-group">
+							<label for="lg_foglightUrl" class="sr-only">Foglight Url</label> 
+							<input
+								type="text" class="form-control" id="lg_foglightUrl"
+								name="lg_foglightUrl" placeholder="foglightUrl" th:field="*{foglightUrl}" />
+						</div>
+						<div class="form-group">
+							<label for="lg_authToken" class="sr-only">Auth Token</label> 
+							<input
+								type="text" class="form-control" id="lg_authToken"
+								name="lg_authToken" placeholder="authToken" th:field="*{authToken}" />
 						</div>
 					</div>
 					<button type="submit" class="login-button">

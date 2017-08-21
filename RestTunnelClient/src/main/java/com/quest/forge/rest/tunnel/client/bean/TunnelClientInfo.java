@@ -4,16 +4,20 @@ public class TunnelClientInfo {
 
 	private String customCode;
 	private String connectionToken;
+	private String accessKey;
+	private String authToken;
 	private String foglightUrl;
 	
 	public TunnelClientInfo () {
-		this (null, null, null);
+		this (null, null, null, null, null);
 	}
 	
-	public TunnelClientInfo (String customCode, String connectionToken, String foglightUrl) {
+	public TunnelClientInfo (String customCode, String connectionToken, String accessKey, String foglightUrl, String authToken) {
 		this.customCode = customCode;
 		this.connectionToken = connectionToken;
+		this.accessKey = accessKey;
 		this.foglightUrl = foglightUrl;
+		this.authToken = authToken;
 	}
 
 	public String getCustomCode() {
@@ -38,5 +42,21 @@ public class TunnelClientInfo {
 
 	public void setConnectionToken(String connectionToken) {
 		this.connectionToken = connectionToken;
+	}
+
+	public String getAuthToken() {
+		return authToken;
+	}
+
+	public void setAuthToken(String authToken) {
+		this.authToken = authToken;
+	}
+	
+	public String getAccessKey() {
+		return accessKey;
+	}
+
+	public void setAccessKey(String accessKey) {
+		this.accessKey = accessKey;
 	}
 }
