@@ -48,7 +48,7 @@ public class TunnelClientServiceImpl implements TunnelClientService {
 	@Autowired
 	private RestTunnelClientConfig clientConfig;
 	
-	public static final int CONNECT_WAITING_TIMEOUT_CHECKCOUNT = 10;
+	public static final int CONNECT_WAITING_TIMEOUT_CHECKCOUNT = 30;
 	public static final int CONNECT_WAITING_TIMEOUT = 2 * 1000;
 
 	private static TunnelClient client;
