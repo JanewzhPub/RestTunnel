@@ -1,4 +1,10 @@
 This is the source code for restful tunnel. 
+> **Note:**  Hypothesis
+> You already get a user credential from the company. Such user credential including the following items
+> **Custom Code**: a code to identify you, using in RestTunnelClient side.
+> **Access Token**: or say tunnel client access key, a code to verify yourself, using in RestTunnelClient side.
+> **Access Key**: or say mobile client access key, a code to use as a header when you request for restful apis.
+> For this sample, you can get this credential only from running the source code (run RestTunnelServer/com.quest.forge.rest.tunnel.server.service.impl.AccessKeyManagerImpl) currently.
 
 # Modules
 | Module Name | Description |
@@ -8,9 +14,7 @@ This is the source code for restful tunnel.
 | RestTunnelServer | restful tunnel server is a webapplication and need to be deployed to webserver |
 
 # Build
-`mvn clean` -- clean all the modules
-
-`mvn install` -- build all the modules
+`mvn clean install`
 > **Note:**  Pre-requirement
 > tomcat: 8+
 > jdk: 1.8+
@@ -31,62 +35,24 @@ Add following configuration to tomcat's server.xml (<TOMCAT_HOME>/conf/server.xm
 ```
 > **Note:** We will us mfoglight.pfx to secure the communication between client and server in our application. You can generate yours and change the server.xml configuration for server and change TunnelClient reference for client. 
 
-# Request Access Key
-There are two kind of access key, one we called "mtoken" is used to identify the mobile client and the other one we called "ttoken" is used to identify the client java application. 
-First, you need to request a ttoken by your custom code, then you can use this custom code and ttoken to change the client.bat/.sh arguments before startup the client application.
-Then, before calling the FMS restful APIs, you need to request a mtoken with your custom code and then you can use this mtoken to request the FMS restful APIs.
-
-Request ttoken
---------------
-|                  | 		                      |
- ----------------- | ----------------------------
-| **PROTOCOL** | https |
-| **URL** | /ttoken |
-| **METHOD**| GET |
-| **HEADER**| Custom-Code |
-
-> **Note:**  An example of success response as below:
- >```json
-> {
->     "status": 1,
->     "data": {
->         "ttoken": "ZxdGqSdsV9nsG0XWvsM4F0Qt0LhpX6cbYiCxuSwOo6ON3p4KJEZG9go88+TCpAGrd6wTjStc9PGjHmTXFWA+hnDfUjgDyQT/R+ybQBfRIR/UX+imn3SvVrDwnJeAptvFXUnI/nGNbr/zAdobmHABh9G79cIIblUvVWzEgP1jXZo="
->     }
-> }
->```
-
-Request mtoken
---------------
-|                  | 		                      |
- ----------------- | ----------------------------
-| **PROTOCOL** | https |
-| **URL** | /mtoken |
-| **METHOD**| GET |
-| **HEADER**| Custom-Code |
-
-> **Note:**  An example of success response as below:
-> ```json
-> {
->     "status": 1,
->     "data": {
->         "mtoken": "SjmdqbeeqkvLV/SnpzGa8v0e5Us="
->     }
-> }
->```
-
 # Deployment/Run
 
 Server
 ------
 
-You can find <RestTunnelServer>/target/api.war after build, and then you need to deploy this war file to your web server.  
+After build, you can find <RestTunnelServer>/target/api.war after build, and then you need to deploy this war file to your web server.  
 > **Note:**  For support WSS please refer to section WSS Configure
 
 Client
 ---------
-You can find <RestTunnelClient>/target/security.policy after build, and you need to update the ip addresses for SocketPermission. One is your FMS's ip:port, and the other one is your web server's ip:port.
-You can find <RestTunnelClient>/target/startClient.bat after build, and you need to update the JAVA_HOME, RestTunnelServer's connection url (wss) and FMS's connection url (http). If you change Custom Code, you need to retrieve ttoken (refer to Request ttoken) and update the default custom code (Quest) and token afterwards to your new settings.
-Then in the command line, start client from startClient.bat.
-
-# Request Changes
-If you can run the application successfully, then you need to mtoken with your Custom Code first (refer to Request mtoken). Then use this token as a header (Access-Key) for all the Foglight Restful APIs. 
+After build, you can find a jar file named <RestTunnelClient>/target/RestTunnelClient-0.0.1-SNAPSHOT.jar, then you need to run it as below. It will startup a embedded web server at 8080 by default, and you can access localhost:8080 later.
+```
+java -jar RestTunnelClient-0.0.1-SNAPSHOT.jar
+```
+or
+```
+java -jar RestTunnelClient-0.0.1-SNAPSHOT.jar --server.port=8085 --logging.file=<log file path>
+```
+> **Note:**  There are two parameters you can modify for your environment
+> server.port -- web server listening port
+> logging.file -- log file path
