@@ -22,27 +22,33 @@
   AS A RESULT OF USING, MODIFYING OR DISTRIBUTING
   THIS SOFTWARE OR ITS DERIVATIVES.
 */
-package com.quest.forge.rest.tunnel.client;
+package com.quest.forge.rest.tunnel.client.service;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import java.text.MessageFormat;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+
+import org.springframework.stereotype.Service;
 
 /**
- * 
+ * Message bundle read from Messsages.properties/Messages_<lang>.properties
  * @author jwang7
  *
  */
-@SpringBootApplication
-public class RestTunnelClientWebApplication extends SpringBootServletInitializer  {
+@Service("MessageBundleService")
+public class MessageBundleServiceImpl implements MessageBundleService {
 
-	@Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(RestTunnelClientWebApplication.class);
-    }
+	private ResourceBundle bundle = ResourceBundle.getBundle("Messages");
 	
-	public static void main(String[] args) {
-		SpringApplication.run(RestTunnelClientWebApplication.class, args);
+	public String getMessage(String messageKey) {
+		return bundle.getString(messageKey);
+	}
+	
+	public String getMessage(String messageKey, Object ... params) {
+		try {
+            return MessageFormat.format(bundle.getString(messageKey), params);
+        } catch (MissingResourceException e) {
+            return '!' + messageKey + '!';
+        }
 	}
 }

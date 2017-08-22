@@ -1,3 +1,27 @@
+/*
+  QUEST SOFTWARE PROPRIETARY INFORMATION
+  
+  This software is confidential.  Quest Software Inc., or one of its
+  subsidiaries, has supplied this software to you under terms of a
+  license agreement, nondisclosure agreement or both.
+  
+  You may not copy, disclose, or use this software except in accordance with
+  those terms.
+  
+  
+  Copyright 2017 Quest Software Inc.
+  ALL RIGHTS RESERVED.
+  
+  QUEST SOFTWARE INC. MAKES NO REPRESENTATIONS OR
+  WARRANTIES ABOUT THE SUITABILITY OF THE SOFTWARE,
+  EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+  TO THE IMPLIED WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE, OR
+  NON-INFRINGEMENT.  QUEST SOFTWARE SHALL NOT BE
+  LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE
+  AS A RESULT OF USING, MODIFYING OR DISTRIBUTING
+  THIS SOFTWARE OR ITS DERIVATIVES.
+*/
 package com.quest.forge.rest.tunnel.client.controller;
 
 import java.io.FileInputStream;
@@ -24,16 +48,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.quest.forge.rest.tunnel.client.bean.TunnelClientInfo;
 import com.quest.forge.rest.tunnel.client.config.RestTunnelClientConfig;
 import com.quest.forge.rest.tunnel.client.service.LoginRequestService;
+import com.quest.forge.rest.tunnel.client.service.MessageBundleService;
 import com.quest.forge.rest.tunnel.client.service.TunnelClientService;
 
 import net.glxn.qrgen.core.image.ImageType;
 import net.glxn.qrgen.javase.QRCode;
 
+/**
+ * Handler front-end request
+ * @author jwang7
+ */
 @Controller
-public class TunnelClientController extends AbstractController {
+public class TunnelClientController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TunnelClientController.class);
 	
+	@Autowired
+	private MessageBundleService message;
 	@Autowired
 	private RestTunnelClientConfig clientConfig;
 	@Autowired
@@ -69,25 +100,25 @@ public class TunnelClientController extends AbstractController {
 						model.addAttribute("AccessToken", accessToken);
 						return "qr";
 					} else {
-						logger.error(getMessage("client.request.loginFailed.debug", 
+						logger.error(message.getMessage("client.request.loginFailed.debug", 
 								tunnelClientInfo.getFoglightUrl(), 
 								tunnelClientInfo.getAuthToken()));
-						model.addAttribute("ResultMessage", getMessage("client.request.loginFailed"));
+						model.addAttribute("ResultMessage", message.getMessage("client.request.loginFailed"));
 					}
 				} catch (Exception e) {
-					logger.error(getMessage("client.request.accessTokenFailed"));
-					model.addAttribute("ResultMessage", getMessage("client.request.accessTokenFailed"));
+					logger.error(message.getMessage("client.request.accessTokenFailed"));
+					model.addAttribute("ResultMessage", message.getMessage("client.request.accessTokenFailed"));
 				}
 			} else {
-				logger.error(getMessage("client.start.failed.debug", 
+				logger.error(message.getMessage("client.start.failed.debug", 
 						tunnelClientInfo.getCustomCode(), 
 						tunnelClientInfo.getConnectionToken(), 
 						tunnelClientInfo.getFoglightUrl()));
-				model.addAttribute("ResultMessage", getMessage("client.start.failed"));
+				model.addAttribute("ResultMessage", message.getMessage("client.start.failed"));
 			}
 		} else {
-			logger.error(getMessage("request.parameter.invalid"));
-			model.addAttribute("ResultMessage", getMessage("request.parameter.invalid"));
+			logger.error(message.getMessage("request.parameter.invalid"));
+			model.addAttribute("ResultMessage", message.getMessage("request.parameter.invalid"));
 		}
 		return "main";
 	}
@@ -107,12 +138,12 @@ public class TunnelClientController extends AbstractController {
 				byte[] content = IOUtils.toByteArray(in);
 				return new ResponseEntity<byte[]> (content, headers, HttpStatus.CREATED);
 			} catch (FileNotFoundException e) {
-				logger.error(getMessage("client.qr.failed.debug", e.getMessage()));
+				logger.error(message.getMessage("client.qr.failed.debug", e.getMessage()));
 			} catch (IOException e) {
-				logger.error(getMessage("client.qr.failed.debug", e.getMessage()));
+				logger.error(message.getMessage("client.qr.failed.debug", e.getMessage()));
 			}
     	} else {
-    		logger.error(getMessage("request.parameter.invalid"));
+    		logger.error(message.getMessage("request.parameter.invalid"));
     	}
     	return new ResponseEntity<byte[]> (null, headers, HttpStatus.CREATED);
 	}

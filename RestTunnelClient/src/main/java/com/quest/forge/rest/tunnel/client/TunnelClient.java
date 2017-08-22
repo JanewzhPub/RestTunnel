@@ -34,9 +34,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.ByteBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
@@ -45,6 +42,8 @@ import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 import org.eclipse.jetty.websocket.client.ClientUpgradeRequest;
 import org.eclipse.jetty.websocket.client.WebSocketClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.quest.forge.rest.tunnel.common.ExchangeMessage;
 import com.quest.forge.rest.tunnel.common.GZipUtil;
@@ -64,7 +63,7 @@ import com.quest.forge.rest.tunnel.common.ResourceResponse;
 @WebSocket(maxIdleTime = -1, maxBinaryMessageSize = 2048 * 1024)
 public class TunnelClient {
 
-private final static Log logger = LogFactory.getLog(TunnelClient.class.getName());
+private final static Logger logger = LoggerFactory.getLogger(TunnelClient.class);
 
 private Session session;
 

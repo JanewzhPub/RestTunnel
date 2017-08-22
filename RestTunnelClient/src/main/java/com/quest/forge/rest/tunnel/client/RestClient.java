@@ -33,8 +33,9 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -51,7 +52,7 @@ import com.quest.forge.rest.tunnel.common.ResourceResponse;
  */
 public class RestClient {
 
-private final static Log logger = LogFactory.getLog(TunnelClient.class.getName());
+private final static Logger logger = LoggerFactory.getLogger(TunnelClient.class);
 
 private final String baseURL;
 
@@ -120,10 +121,8 @@ public ResourceResponse request(ResourceRequest request) throws IOException {
 			is = con.getErrorStream();
 		}
 		String responseBody = IOUtils.toString(is, StandardCharsets.UTF_8.name());
-		if (logger.isDebugEnabled()) {
-			logger.debug("requested resource " + url.toString() + ", and response body is: "
-					+ responseBody);
-		}
+		logger.debug("requested resource " + url.toString() + ", and response body is: "
+				+ responseBody);
 		return new ResourceResponse(con.getResponseCode(), con.getContentType(), responseBody);
 	}
 	finally {

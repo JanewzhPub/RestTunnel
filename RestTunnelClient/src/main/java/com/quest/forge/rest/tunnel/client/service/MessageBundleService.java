@@ -22,27 +22,16 @@
   AS A RESULT OF USING, MODIFYING OR DISTRIBUTING
   THIS SOFTWARE OR ITS DERIVATIVES.
 */
-package com.quest.forge.rest.tunnel.client;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+package com.quest.forge.rest.tunnel.client.service;
 
 /**
  * 
  * @author jwang7
  *
  */
-@SpringBootApplication
-public class RestTunnelClientWebApplication extends SpringBootServletInitializer  {
+public interface MessageBundleService {
 
-	@Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(RestTunnelClientWebApplication.class);
-    }
+	String getMessage(String messageKey);
 	
-	public static void main(String[] args) {
-		SpringApplication.run(RestTunnelClientWebApplication.class, args);
-	}
+	String getMessage(String messageKey, Object ... params);
 }

@@ -29,8 +29,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Watch the websocket connection with 15 seconds interval, retry to connect
@@ -41,7 +41,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class TunnelWebsocketWatcher {
 
-private final static Log logger = LogFactory.getLog(TunnelWebsocketWatcher.class.getName());
+private final static Logger logger = LoggerFactory.getLogger(TunnelWebsocketWatcher.class);
 
 private final ScheduledThreadPoolExecutor executor;
 

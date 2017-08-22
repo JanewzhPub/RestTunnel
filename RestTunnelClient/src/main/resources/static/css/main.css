@@ -59,8 +59,9 @@ a:hover {
   background: transparent;
   color: #555555;
   padding: 7px 0;
-  font-weight: bold;
+  /*font-weight: bold;*/
   height:auto;
+  width: 100%;
 }
 .login-form-1 .form-control::-webkit-input-placeholder {
   color: #999999;
